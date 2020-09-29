@@ -19,7 +19,7 @@ test.serial('Create a company', async t => {
 
 test.serial('Check created company', async t => {
   
-  const response = await get(`https://api.hash.com.br/children/companies?company_id=${newCompanyId}`)
+  const response = await get('https://api.hash.com.br/children/companies?company_id=' + newCompanyId)
   
   t.truthy(response)
   
