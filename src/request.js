@@ -20,18 +20,21 @@ const get = (url) => fetch(url, makeRequest('GET'))
   .then(response => response.json())
   .then(response => {
     if (response.errors) { throw response }
+    return response
   })
 
 const post = (url, payload) => fetch(url, makeRequest('POST', payload))
   .then(response => response.json())
   .then(response => {
     if (response.errors) { throw response }
+    return response
   })
 
 const put = (url, payload) => fetch(url, makeRequest('PUT', payload))
   .then(response => response.json())
   .then(response => {
     if (response.errors) { throw response }
+    return response
   })
 
 module.exports = { get, post, put }
