@@ -28,4 +28,10 @@ const post = (url, payload) => fetch(url, makeRequest('POST', payload))
     if (response.errors) { throw response }
   })
 
-module.exports = { get, post }
+const put = (url, payload) => fetch(url, makeRequest('PUT', payload))
+  .then(response => response.json())
+  .then(response => {
+    if (response.errors) { throw response }
+  })
+
+module.exports = { get, post, put }
