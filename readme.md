@@ -1,4 +1,4 @@
-# Use Hash
+# Use Hash (work in progress)
 
 `From your "first test request" to your "first production transaction"`
 
@@ -10,7 +10,7 @@ The code part of this guide was writen in JS for illustration. The code used can
 
 If you are reading this document you might have received your initial credentials email with our API Docs link and your API test key. You are a company in hash API now, your api key is directly tied with your company. 
 
-## Creating your first company
+## Create company
 
 Your company is the parent of all the companies you create in our API, and in order to make a transaction your first step is to create a company that will be responsible for this transaction.
 
@@ -25,6 +25,22 @@ _source: "Create a company" in [index.test.js](./src/index.test.js)_
 
 _API Docs source: https://docs.hash.com.br/reference#create-merchant_
 
+## Enable Dashboard (optional)
+
+You can enable access to our Dashboard for an existing company by making the request bellow which will activate this company's user.
 
 ## Create affiliation
 
+After creating a company you have to have to create an affiliation which will contain the provider used in order to register transactions. In order to do that we send this request:
+
+## Configure fee rule
+
+After creating a company and an affiliation you have to register the fee rule for the company created. In order to do that we use this request:
+
+## Register Hardware
+
+The last step before being able to register transaction is to register a hardware (For example, a POS). To register a hardware we use this request:
+
+## Register Transaction
+
+We can now register transactions
