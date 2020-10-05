@@ -16,6 +16,8 @@ Your company is the parent of all the companies you create in our API, and in or
 
 When succesfull the request below will return an object that represents the new company created.
 
+MCC WORK IN PROGRESS EXPLANATION NEED
+
 The `companyCreationData` used is this file: [mock-data/company-creation.json](./mock-data/company-creation.json)
 
 ```js
