@@ -5,127 +5,42 @@ const { get, post, put } = require('./request')
 
 // first-request to first-transaction
 
-let newCompanyId = null
+parentCompanyApiKey = process.env.PARENT_COMPANY_API_KEY
 
-// test.serial('Create a company', async t => {
+let childCompanyApiKey = null
 
-//   const companyCreationData = require('./mock-data/company-creation') 
+test.serial('Create a company', async t => {
+
+  const createCompany = require('./mock-data/create-company') 
+
+  createCompany.document_number = '37082486006' // change this if you need to create a new company after testing once
   
-//   const company = await post('https://api.hash.com.br/children/companies', companyCreationData)
+  const childCompany = await post('https://api.hash.com.br/children/companies', createCompany, parentCompanyApiKey)
 
-//   newCompanyId = company.id
-  
-// })
-
-// test.serial('Check created company', async t => {
-  
-//   const response = await get('https://api.hash.com.br/children/companies?company_id=' + newCompanyId)
-  
-//   t.truthy(response)
-  
-// })
-
-// test.skip.serial('Deactivate company', async t => {
-
-//   const companyCreationData = require('./mock-data/company-creation') 
-
-
-//   // User status possibilities: https://github.com/hashlab/hashql/blob/c425a6c0e5f85c1b6c238e763e42cc16db3ba7dd/packages/entities/src/user/user.ts#L10
-  
-//   // const response = await put('https://api.hash.com.br/children/companies', { company_id: '5f71f5833d94ba00064a75cf' })
-  
-//   t.truthy(response)
-  
-// })
-
-// test.serial('Check all companies', async t => {
-  
-//   const response = await get('https://api.hash.com.br/children/companies')
-
-//   console.log(response)
-  
-//   t.truthy(response)
-  
-// })
-
-
-
-// test.serial('Create an affiliation', async t => {
-
-//   const affilitaionCreationData = require('./mock-data/affiliation-creation.json')
-  
-//   const affiliation = await post('https://api.hash.com.br/affiliations', affilitaionCreationData)
-
-//   console.log(affiliation)
-  
-// })
-
-
-
-const cost = {
-  "mcc": "7998",
-  "provider": "hash",
-  "anticipation_cost": 1.38,
-  "brands": [{
-    "brand": "visa",
-    "cost": {
-      "debit": 0.87,
-      "credit_1": 1.53,
-      "credit_2": 1.73,
-      "credit_7": 2.25  
-    }
-  }, {
-    "brand": "mastercard",
-    "cost": {
-      "debit": 0.87,
-      "credit_1": 1.41,
-      "credit_2": 1.64,
-      "credit_7": 1.68  
-    }
-  }, {
-    "brand": "hiper",
-    "cost": {
-      "debit": 0.93,
-      "credit_1": 1.86,
-      "credit_2": 2.06,
-      "credit_7": 2.41
-    }
-  }, {
-    "brand": "elo",
-    "cost": {
-      "debit": 0.93,
-      "credit_1": 1.86,
-      "credit_2": 2.06,
-      "credit_7": 2.41
-    }
-  }, {
-    "brand": "amex",
-    "cost": {
-      "debit": 0.93,
-      "credit_1": 1.86,
-      "credit_2": 2.06,
-      "credit_7": 2.41
-    }
-  }]
-}
-
-test.serial('Change your company cost', async t => {
-  
-  const response = await post('https://api.hash.com.br/companies/mcc', cost)
-
-  console.log(response)
-  
-  t.truthy(response)
+  childCompanyApiKey = childCompany.api_key
   
 })
 
-// test.serial('Consult your company cost', async t => {
+test.serial('Create affiliation', async t => {
 
-  
-//   const response = await get('https://api.hash.com.br/companies/mcc')
+  const createAffiliation = require('./mock-data/create-affiliation') 
 
-//   console.log(response)
+  const affiliation = await post('https://api.hash.com.br/affiliations', createAffiliation, childCompanyApiKey)
   
-//   t.truthy(response)
+})
+
+test.serial('Configure fee rule', async t => {
+
+  const createFeeRule = require('./mock-data/create-fee-rule') 
+
+  const feeRule = await post('https://api.hash.com.br/feeRules', createFeeRule, childCompanyApiKey)
   
-// })
+})
+
+test.serial('Register Hardware', async t => {
+
+  const registerHardware = require('./mock-data/register-hardware') 
+
+  const hardware = await post('https://api.hash.com.br/children/company_id/hardwares', registerHardware, childCompanyApiKey)
+  
+})
