@@ -42,24 +42,24 @@
     "metadata": {
         "teste": [{
             "oi": 123
-            }]
-        },
-        "company_metadata": {
-            "alguma_info_customizada": "super_custom",
-            "central": "01",
-            "type": "partner",
-            "partner": "SP_01",
-            "salesman": "guido+salesman@hash.com.br"
-        },
-        "email_configurations": {
-            "custom_domain_enabled": false,
-            "send_activation_email": false
-        },
-        "main_capture_method": "pos",
-        "capture_method_hardware_owner": "company",
-        "transfer_configurations":  {
-            "automatic_transfer_enabled": true,
-            "transfer_frequency": "daily",
-            "transfer_date": 1
-        }
+        }]
+    },
+    "company_metadata": {
+        "alguma_info_customizada": "super_custom",
+        "central": "01",
+        "type": "partner",
+        "partner": "SP_01",
+        "salesman": "guido+salesman@hash.com.br"
+    },
+    "email_configurations": {
+        "custom_domain_enabled": false,
+        "send_activation_email": false
+    },
+    "main_capture_method": "pos",
+    "capture_method_hardware_owner": "company",
+    "transfer_configurations": {
+        "automatic_transfer_enabled": true,
+        "transfer_frequency": "daily",
+        "transfer_date": 1
     }
+}
