@@ -48,10 +48,28 @@ _API Docs source: https://docs.hash.com.br/reference#create-affiliations_
 
 After creating a company and an affiliation you have to register the fee rule for the company created. In order to do that we use this request:
 
+The `createFeeRule` used is this file: [mock-data/create-fee-rule.json](./mock-data/create-fee-rule.json)
+
+```js
+const feeRule = await post('https://api.hash.com.br/feeRules', createFeeRule, childCompanyApiKey)
+```
+_source: "Create fee rule" in [index.test.js](./src/index.test.js)_
+
+_API Docs source: https://docs.hash.com.br/reference#create-fee-rule_
+
 ## Register Hardware
 
 The last step before being able to register transaction is to register a hardware (For example, a POS). To register a hardware we use this request:
 
-## Register Transaction ???
+The `registerHardware` used is this file: [mock-data/register-hardware.json](./mock-data/register-hardware.json)
 
-We can now register transactions
+```js
+const hardware = await post('https://api.hash.com.br/children/company_id/hardwares', registerHardware, childCompanyApiKey)
+```
+_source: "Register hardware" in [index.test.js](./src/index.test.js)_
+
+_API Docs source: https://docs.hash.com.br/reference#register-a-hardware
+
+## Register Transaction 
+
+????????????

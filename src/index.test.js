@@ -37,7 +37,7 @@ test.serial('Configure fee rule', async t => {
   
 })
 
-test.serial('Register Hardware', async t => {
+test.serial('Register hardware', async t => {
 
   const registerHardware = require('./mock-data/register-hardware') 
 
