@@ -1,26 +1,46 @@
 require('dotenv').config()
 
 const test = require('ava')
-const { get, post } = require('./request')
+const { get, post, put } = require('./request')
 
 // first-request to first-transaction
 
-let newCompanyId = null
+parentCompanyApiKey = process.env.PARENT_COMPANY_API_KEY
+
+let childCompanyApiKey = null
 
 test.serial('Create a company', async t => {
 
-  const companyCreationData = require('./mock-data/company-creation') 
-  
-  const company = await post('https://api.hash.com.br/children/companies', companyCreationData)
+  const createCompany = require('./mock-data/create-company') 
 
-  newCompanyId = company.id
+  createCompany.document_number = '37082486006' // change this if you need to create a new company after testing once
+  
+  const childCompany = await post('https://api.hash.com.br/children/companies', createCompany, parentCompanyApiKey)
+
+  childCompanyApiKey = childCompany.api_key
   
 })
 
-test.serial('Check created company', async t => {
+test.serial('Create affiliation', async t => {
+
+  const createAffiliation = require('./mock-data/create-affiliation') 
+
+  const affiliation = await post('https://api.hash.com.br/affiliations', createAffiliation, childCompanyApiKey)
   
-  const response = await get('https://api.hash.com.br/children/companies?company_id=' + newCompanyId)
+})
+
+test.serial('Configure fee rule', async t => {
+
+  const createFeeRule = require('./mock-data/create-fee-rule') 
+
+  const feeRule = await post('https://api.hash.com.br/feeRules', createFeeRule, childCompanyApiKey)
   
-  t.truthy(response)
+})
+
+test.serial('Register hardware', async t => {
+
+  const registerHardware = require('./mock-data/register-hardware') 
+
+  const hardware = await post('https://api.hash.com.br/children/company_id/hardwares', registerHardware, childCompanyApiKey)
   
 })

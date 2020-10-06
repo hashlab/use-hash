@@ -1,0 +1,21 @@
+{
+    "anticipation_fee": 2.99,
+    "anticipation_type": "per_installment",
+    "brands": [{
+      "brand": "visa",
+      "fee": {
+        "debit": 2.9,
+        "credit_1": 3.8,
+        "credit_2": 4.1,
+        "credit_7": 4.5  
+      }
+    }, {
+      "brand": "mastercard",
+      "fee": {
+        "debit": 2.9,
+        "credit_1": 3.8,
+        "credit_2": 4.1,
+        "credit_7": 4.5  
+      }
+    }]
+  }
