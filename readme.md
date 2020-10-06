@@ -14,26 +14,35 @@ If you are reading this document you might have received your initial credential
 
 Your company is the parent of all the companies you create in our API, and in order to make a transaction your first step is to create a company that will be responsible for this transaction.
 
-When succesfull the request below will return an object that represents the new company created.
+When succesfull the request below will return an object that represents the new company created. **For all the other next steps use the API key that is returned inside the company object from this request's response, this is how we bind all other entities to this company**
 
-MCC WORK IN PROGRESS EXPLANATION NEED
+The `createCompany` used is this file: [mock-data/create-company.json](./mock-data/create-company.json)
 
-The `companyCreationData` used is this file: [mock-data/company-creation.json](./mock-data/company-creation.json)
+The `parentCompanyApiKey` used is this file: [mock-data/create-company.json](./mock-data/create-company.json)
 
 ```js
-post('https://api.hash.com.br/children/companies', companyCreationData)
+  const childCompany = await post('https://api.hash.com.br/children/companies', createCompany, parentCompanyApiKey)
+
+  childCompanyApiKey = childCompany.api_key
 ```
-_source: "Create a company" in [index.test.js](./src/index.test.js)_
+_source: "Create company" in [index.test.js](./src/index.test.js)_
 
 _API Docs source: https://docs.hash.com.br/reference#create-merchant_
 
-## Enable Dashboard (optional)
-
-You can enable access to our Dashboard for an existing company by making the request bellow which will activate this company's user.
+*_Note about MCC field: In production when creating a company you have to send the correct MCC number since the costs related to a transaction are referenced from the MCC. If you are integrating our API now you should already have the MCCs that will be used since this is done before the API integration step._
 
 ## Create affiliation
 
 After creating a company you have to have to create an affiliation which will contain the provider used in order to register transactions. In order to do that we send this request:
+
+The `createAffiliation` used is this file: [mock-data/create-affiliation.json](./mock-data/create-affiliation.json)
+
+```js
+const company = post('https://api.hash.com.br/affiliations', createAffiliation, childCompanyApiKey)
+```
+_source: "Create affiliation" in [index.test.js](./src/index.test.js)_
+
+_API Docs source: https://docs.hash.com.br/reference#create-affiliations_
 
 ## Configure fee rule
 
@@ -43,6 +52,6 @@ After creating a company and an affiliation you have to register the fee rule fo
 
 The last step before being able to register transaction is to register a hardware (For example, a POS). To register a hardware we use this request:
 
-## Register Transaction
+## Register Transaction ???
 
 We can now register transactions
