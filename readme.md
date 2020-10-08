@@ -32,8 +32,6 @@ _source: "Create company" in [index.test.js](./src/index.test.js)_
 
 _API Docs source: https://docs.hash.com.br/reference#create-merchant_
 
-*_Note about MCC field: In production when creating a company you have to send the correct MCC number since the costs related to a transaction are referenced from the MCC. If you are integrating our API now you should already have the MCCs that will be used since this is done before the API integration step._
-
 ## Create affiliation
 
 After creating a company you have to have to create an affiliation which will contain the provider used in order to register transactions. In order to do that we send this request:
