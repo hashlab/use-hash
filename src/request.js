@@ -6,18 +6,24 @@ const makeRequest = (method, payload, apiKey) => {
 
   const authorizationHeader = `Basic ${encodedAuthorizationHeader}`
 
+  let body = undefined
+
+  if (method !== 'GET' && payload) {
+    body = JSON.stringify(payload)
+  }
+
   return {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json;charset=UTF-8',
       'Authorization': authorizationHeader,
     },
-    body: payload && JSON.stringify(payload),
+    body,
     method,
   }
 }
 
-const get = (url, payload, apiKey) => fetch(url, makeRequest('GET',payload, apiKey))
+const get = (url, payload, apiKey) => fetch(url, makeRequest('GET', payload, apiKey))
   .then(response => response.json())
   .then(response => {
     if (response.errors) { throw response }

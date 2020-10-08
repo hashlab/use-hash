@@ -4,11 +4,13 @@
 
 This is a guide to support developers that are integrating with Hash API for the first time. The initial part of this document is a step-by-step guide on the requests you need to make in order for your first test transaction work. The second part will better illustrate all entities that we created in this guide and how they corelate in Hash environment.
 
-The code part of this guide was writen in JS for illustration. The code used can be ran locally by cloning this repository, installing node.js, run `npm install` to install dependencies, add your hash_key to .env, then finally `npm test` to run all tests written on this guide.
+The code part of this guide was writen in JS for illustration. For more information on the code there is a section below the guide [about the code in this repository](#about-the-code-in-this-repository)
 
 # Step-by-step request guide 
 
-If you are reading this document you might have received your initial credentials email with our API Docs link and your API test key. You are a company in hash API now, your api key is directly tied with your company. 
+If you are reading this document you might have received your initial credentials email with our API Docs link and your API test key. You are a company in hash API now, your api key is directly tied with your company.
+
+An API key will be required for every request in our API and it is sent on the header. To see how that happens at the code level check out the [request module](./src/request.js) for this repository, the function "makeRequest" (line 3) builds the correct header using a Hash API Key.
 
 ## Create company
 
@@ -21,9 +23,10 @@ The `createCompany` used is this file: [mock-data/create-company.json](./mock-da
 The `parentCompanyApiKey` used is this file: [mock-data/create-company.json](./mock-data/create-company.json)
 
 ```js
-  const childCompany = await post('https://api.hash.com.br/children/companies', createCompany, parentCompanyApiKey)
+const childCompany = await post('https://api.hash.com.br/children/companies', createCompany, parentCompanyApiKey)
 
-  childCompanyApiKey = childCompany.api_key
+childCompanyApiKey = childCompany.hash_key
+childCompanyId = childCompany.id
 ```
 _source: "Create company" in [index.test.js](./src/index.test.js)_
 
@@ -51,7 +54,7 @@ After creating a company and an affiliation you have to register the fee rule fo
 The `createFeeRule` used is this file: [mock-data/create-fee-rule.json](./mock-data/create-fee-rule.json)
 
 ```js
-const feeRule = await post('https://api.hash.com.br/feeRules', createFeeRule, childCompanyApiKey)
+const feeRule = await post(`https://api.hash.com.br/children/${childCompanyId}/fee_rule`, createFeeRule, parentCompanyApiKey)
 ```
 _source: "Create fee rule" in [index.test.js](./src/index.test.js)_
 
@@ -64,12 +67,43 @@ The last step before being able to register transaction is to register a hardwar
 The `registerHardware` used is this file: [mock-data/register-hardware.json](./mock-data/register-hardware.json)
 
 ```js
-const hardware = await post('https://api.hash.com.br/children/company_id/hardwares', registerHardware, childCompanyApiKey)
+const hardware = await post(`https://api.hash.com.br/children/${childCompanyId}/hardwares`, registerHardware, parentCompanyApiKey)
 ```
 _source: "Register hardware" in [index.test.js](./src/index.test.js)_
 
-_API Docs source: https://docs.hash.com.br/reference#register-a-hardware
+_API Docs source: https://docs.hash.com.br/reference#register-a-hardware_
 
 ## Register Transaction 
 
-????????????
+tbd
+
+## View all transactions for a company
+
+tbd
+
+## Listen to transactions webhooks
+
+tbd
+
+# About the code in this repository
+
+This repository can be cloned and you can run the code to test request by yourself:
+
+1) Install [Node.js](https://nodejs.org/en/)
+2) Clone this repository
+3) Run `npm install` to install dependencies
+4) Add your API key and IDs
+5) Run `npm test` to run all tests
+
+About 4, here are the places where you'll have to change in order for the tests in [**index.test.js**](./src/inde.test.js) to work:
+
+* **line 4**: Add the API Key of your parent company
+
+    * If you already ran the test once you have to change the document number on line 16 in order to create a new 
+company. The document number is an unique identifier for our API.
+
+* **line 15**: Add a valid mcc (Your valid MCCs are sent together with your API Key)
+
+* **line 34**: Add a valid internal_merchant_id (Your valid internal_merchant_id's are sent together with your API Key)
+
+* **lines 64, 65 and 66**: Add your hardware information

@@ -1,7 +1,8 @@
 {
-    "provider": "hash",
-    "serial_number": "123-342-998",
-    "terminal_type": "pos",
-    "terminal_model": "vx690",
-    "hardware_provider": "verifone"
-  }
+  "provider": "hash",
+  "software_provider": "celer",
+  "serial_number": "123-342-998",
+  "terminal_type": "pos",
+  "terminal_model": "vx690",
+  "hardware_provider": "verifone"
+}

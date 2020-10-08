@@ -1,9 +1,7 @@
 {
-    "provider": "rede",
-    "enabled": true,
-    "create_merchant": true,
-    "merchant_id": "5f71f5833d94ba00064a75cf",
-    "key": "a",
-    "anticipation_type": "automatic",
-    "status": "active"
-  }
+  "provider": "hash",
+  "enabled": true,
+  "status": "active",
+  "internal_provider": "pags",
+  "internal_merchant_id": "124878730"
+}
