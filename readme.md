@@ -60,7 +60,7 @@ _API Docs source: https://docs.hash.com.br/reference#create-fee-rule_
 
 ## Register Hardware
 
-The last step before being able to register transaction is to register a hardware (For example, a POS). To register a hardware we use this request:
+The last step before being able to register transaction is to register a hardware (For example, a POS). Be sure to alter the data to math your hardware model. The serial number can be found on a barcode sticker attached to the hardware box, the model and provider can be found on the hardware itself. To register a hardware we use this request:
 
 The `registerHardware` used is this file: [mock-data/register-hardware.json](./mock-data/register-hardware.json)
 
@@ -73,15 +73,11 @@ _API Docs source: https://docs.hash.com.br/reference#register-a-hardware_
 
 ## Register Transaction 
 
-tbd
+With everything properly registered you should now be abot to make a transaction with your hardware. In order to do that turn it on, input the  merchant document number in order to activate the terminal, and you should be able to swipe a card and make a test transaction.
 
 ## View all transactions for a company
 
-tbd
-
-## Listen to transactions webhooks
-
-tbd
+Now that you made a transaction you should be able to see it in Hash API. To view all transactions for a company use this request:
 
 # About the code in this repository
 
