@@ -77,7 +77,14 @@ With everything properly registered you should now be abot to make a transaction
 
 ## View all transactions for a company
 
-Now that you made a transaction you should be able to see it in Hash API. To view all transactions for a company use this request:
+Now that you made a transaction you should be able to see it in Hash API. To view all transactions for a company use this request and use the apikey for the correspondent company you want to:
+
+```js
+const response = await get('https://api.hash.com.br/children/transactions?count=10&page=1', {}, childCompanyApiKey)
+```
+_source: "View all transactions for a company" in [index.test.js](./src/index.test.js)_
+
+_API Docs source: https://docs.hash.com.br/reference#get-all-transactions_
 
 # About the code in this repository
 
