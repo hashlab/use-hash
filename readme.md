@@ -86,6 +86,22 @@ _source: "View all transactions for a company" in [index.test.js](./src/index.te
 
 _API Docs source: https://docs.hash.com.br/reference#get-all-transactions_
 
+## View financial calendar for a company
+
+tbd
+
+## Change anticipation configuration
+
+tbd
+
+## Execute spot anticipation
+
+tbd
+
+## Create charge
+
+tbd
+
 # About the code in this repository
 
 This repository can be cloned and you can run the code to test request by yourself:
@@ -96,7 +112,7 @@ This repository can be cloned and you can run the code to test request by yourse
 4) Add your API key and IDs
 5) Run `npm test` to run all tests
 
-About 4, here are the places where you'll have to change in order for the tests in [**index.test.js**](./src/inde.test.js) to work:
+About 4, here are the places where you'll have to change in order for the tests in [**index.test.js**](./src/inde.test.js) to work. Here are some of the lines you will have to change, it's wise to check all fields in the mock data and change them to your testing needs:
 
 * **line 4**: Add the API Key of your parent company
 
