@@ -1,12 +1,12 @@
-# Use Hash (work in progress)
+# Use Hash
 
-`From your "first test request" to your "first production transaction"`
+`From your "first test request" to your "first production transaction" and beyond`
 
 This is a guide to support developers that are integrating with Hash API for the first time. The initial part of this document is a step-by-step guide on the requests you need to make in order for your first test transaction work. The second part will better illustrate all entities that we created in this guide and how they corelate in Hash environment.
 
 The code part of this guide was writen in JS for illustration. For more information on the code there is a section below the guide [about the code in this repository](#about-the-code-in-this-repository)
 
-# Step-by-step request guide 
+# Step-by-step request guide to your first transaction 
 
 If you are reading this document you might have received your initial credentials email with our API Docs link and your API test key. You are a company in hash API now, your api key is directly tied with your company.
 
@@ -74,6 +74,8 @@ _API Docs source: https://docs.hash.com.br/reference#register-a-hardware_
 ## Register Transaction 
 
 With everything properly registered you should now be abot to make a transaction with your hardware. In order to do that turn it on, input the  merchant document number in order to activate the terminal, and you should be able to swipe a card and make a test transaction.
+
+# Beyond the first transaction
 
 ## View all transactions for a company
 
