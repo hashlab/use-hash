@@ -87,7 +87,7 @@ test.serial('Register hardware', async t => {
 // })
 
 
-// test.serial('Fetch all transactions', async t => {
+// test.serial('View all transactions for a company', async t => {
 
 //   const response = await get('https://api.hash.com.br/transactions', {}, childCompanyApiKey)
   
