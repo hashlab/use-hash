@@ -126,3 +126,8 @@ company. The document number is an unique identifier for our API.
 * **line 34**: Add a valid internal_merchant_id (Your valid internal_merchant_id's are sent together with your API Key)
 
 * **lines 64, 65 and 66**: Add your hardware information
+
+# Other Links
+
+* API Docs: https://docs.hash.com.br/
+* Hash Website: https://hash.com.br/
