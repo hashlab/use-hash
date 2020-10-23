@@ -87,12 +87,53 @@ test.serial('Register hardware', async t => {
 // })
 
 
-// test.serial('View all transactions for a company', async t => {
+test.serial('View all transactions for a company', async t => {
 
-//   const response = await get('https://api.hash.com.br/transactions', {}, childCompanyApiKey)
+  const response = await get('https://api.hash.com.br/transactions', {}, childCompanyApiKey)
   
-//   t.falsy(response.errors)
+  t.falsy(response.errors)
 
-//   console.log(response)
+  console.log(response)
 
-// })
+})
+
+test.serial('View financial calendar for a company', async t => {
+
+  const response = await get(`https://api.hash.com.br/payables/${childCompanyId}`, {}, childCompanyApiKey)
+  
+  t.falsy(response.errors)
+
+  console.log(response)
+
+})
+
+test.serial('Change anticipation configuration', async t => {
+
+  const response = 
+  
+  t.falsy(response.errors)
+
+  console.log(response)
+
+})
+
+test.serial('Execute spot anticipation', async t => {
+
+  const response = 
+  
+  t.falsy(response.errors)
+
+  console.log(response)
+
+})
+
+test.serial('Create charge', async t => {
+
+  const response = 
+  
+  t.falsy(response.errors)
+
+  console.log(response)
+
+})
+
