@@ -1,6 +1,6 @@
 ![Use Hash](https://user-images.githubusercontent.com/7863230/96945795-0fb3a680-14b5-11eb-8171-47da9e9261fa.png)
 
-`From your "first test request" to your "first production transaction" and beyond`
+> From your "first test request" to your "first production transaction" and beyond
 
 This is a guide to support developers that are integrating with Hash API for the first time. The initial part of this document is a step-by-step guide on the requests you need to make in order for your first test transaction work. The second part will better illustrate all entities that we created in this guide and how they corelate in Hash environment.
 
