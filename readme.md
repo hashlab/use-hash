@@ -1,4 +1,4 @@
-# Use Hash
+![Use Hash](https://user-images.githubusercontent.com/7863230/96945795-0fb3a680-14b5-11eb-8171-47da9e9261fa.png)
 
 `From your "first test request" to your "first production transaction" and beyond`
 
