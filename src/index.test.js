@@ -117,9 +117,19 @@ test.serial('Change anticipation configuration', async t => {
 
 })
 
+test.serial('Simulate spot anticipation', async t => {
+
+  const response = await post('https://api.hash.com.br/anticipation/simulation', simulateAnticipation, childCompanyApiKey)
+  
+  t.falsy(response.errors)
+
+  console.log(response)
+
+})
+
 test.serial('Execute spot anticipation', async t => {
 
-  const response = 
+  const response = await post('https://api.hash.com.br/anticipation', executeAnticipation, childCompanyApiKey)
   
   t.falsy(response.errors)
 

@@ -88,19 +88,31 @@ _source: "View all transactions for a company" in [index.test.js](./src/index.te
 
 _API Docs source: https://docs.hash.com.br/reference#get-all-transactions_
 
-## View financial calendar for a company
+## View financial calendar for a company _(work in progress)_
 
-tbd
+There is an entity called "payables" which represents an amount of money to be paid to someone. You can list a company's payables in order to have it's financial :calendar 
 
-## Change anticipation configuration
+## Change automatic anticipation configuration _(work in progress)_
 
-tbd
+Anticipation is the act of requesting a payout using future payables. You can schedule anticipations to happen periodically.
 
-## Execute spot anticipation
+## Execute spot anticipation _(work in progress)_
 
-tbd
+The spot anticipation is a pontual request for an anticipation, it's a support tool that you can use if automatic anticipation doesn't fit your needs.
 
-## Create charge
+### Simulating spot anticipation _(work in progress)_
+
+Before executing it's recommended to simulate your anticipation in order to see if things will happen as expected. To simulate an anticipatin we use the route below:
+
+_API Docs source: https://docs.hash.com.br/reference#sobre-a-spot-anticipation_
+
+### Executing spot anticipation _(work in progress)_
+
+To execute a spot anticipatin we do the following request:
+
+_API Docs source: https://docs.hash.com.br/reference#spot-anticipation_
+
+## Create charge _(work in progress)_
 
 tbd
 
