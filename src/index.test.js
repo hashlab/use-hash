@@ -109,7 +109,7 @@ test.serial('View financial calendar for a company', async t => {
 
 test.serial('Change anticipation configuration', async t => {
 
-  const response = 
+  const response = await put('https://api.hash.com.br/anticipation', { anticipation_type: "automatic" /*spot*/ , anticipation_days_interval: 1 /*max 30*/ }, childCompanyApiKey)
   
   t.falsy(response.errors)
 

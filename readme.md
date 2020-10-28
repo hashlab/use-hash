@@ -20,7 +20,7 @@ When succesfull the request below will return an object that represents the new 
 
 The `createCompany` used is this file: [mock-data/create-company.json](./mock-data/create-company.json)
 
-The `parentCompanyApiKey` used is this file: [mock-data/create-company.json](./mock-data/create-company.json)
+The `parentCompanyApiKey` used is your API key
 
 ```js
 const childCompany = await post('https://api.hash.com.br/children/companies', createCompany, parentCompanyApiKey)
@@ -90,19 +90,43 @@ _API Docs source: https://docs.hash.com.br/reference#get-all-transactions_
 
 ## View financial calendar for a company _(work in progress)_
 
-There is an entity called "payables" which represents an amount of money to be paid to someone. You can list a company's payables in order to have it's financial :calendar 
+There is an entity called "payables" which represents an amount of money to be paid to someone. You can list a company's payables in order to have it's financial calendar 
 
-## Change automatic anticipation configuration _(work in progress)_
+## Set anticipation configuration _(work in progress)_
 
-Anticipation is the act of requesting a payout using future payables. You can schedule anticipations to happen periodically.
+Anticipation is the act of requesting a payout using future payables. You can schedule anticipations to happen periodically or can choose to manually anticipate whenever you want to. By default anticipations are automatic and the interval is 1 day, but you can se your own default for the companies you create by updating them in the following route
 
-## Execute spot anticipation _(work in progress)_
+```js
+const response = await put(
+    'https://api.hash.com.br/anticipation',
+    {
+        "anticipation_type": "automatic", // or "spot" for disabling automatic anticipation
+        "anticipation_days_interval": 7, // min 1, max 30. If above is "spot" this is ignored.
+    },
+    childCompanyApiKey
+)
+```
 
-The spot anticipation is a pontual request for an anticipation, it's a support tool that you can use if automatic anticipation doesn't fit your needs.
+The API key used will determine the company to be updated.
 
 ### Simulating spot anticipation _(work in progress)_
 
-Before executing it's recommended to simulate your anticipation in order to see if things will happen as expected. To simulate an anticipatin we use the route below:
+Before executing it's recommended to simulate your anticipation in order to see if things will happen as expected.
+
+First make sure that the company has "spot" anticipation enabled insted of "automatic". This can be done with the following request:
+
+```js
+const response = await put(
+    'https://api.hash.com.br/anticipation',
+    {
+        "anticipation_type": "spot"
+    },
+    childCompanyApiKey
+)
+```
+
+ const response = await post('https://api.hash.com.br/anticipation', executeAnticipation, childCompanyApiKey)
+
 
 _API Docs source: https://docs.hash.com.br/reference#sobre-a-spot-anticipation_
 
