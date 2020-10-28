@@ -125,8 +125,22 @@ const response = await put(
 )
 ```
 
- const response = await post('https://api.hash.com.br/anticipation', executeAnticipation, childCompanyApiKey)
+We then execute the following request:
 
+```js
+const response = await post(
+    'https://api.hash.com.br/anticipation',
+    {
+        "anticipate_to": "2019-05-13",
+        "payables_priority": "start",
+        "anticipate_all": false,
+        "anticipation_type": "per_month",
+        "anticipation_fee": 3,
+        "requested_amount": 500
+    },
+    childCompanyApiKey
+)
+```
 
 _API Docs source: https://docs.hash.com.br/reference#sobre-a-spot-anticipation_
 
