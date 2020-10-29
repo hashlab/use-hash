@@ -18,7 +18,7 @@ Your company is the parent of all the companies you create in our API, and in or
 
 When succesfull the request below will return an object that represents the new company created. **For all the other next steps use the API key that is returned inside the company object from this request's response, this is how we bind all other entities to this company**
 
-The `createCompany` used is this file: [mock-data/create-company.json](./mock-data/create-company.json)
+The `createCompany` used is this file: [mock-data/create-company.json](./src/mock-data/create-company.json)
 
 The `parentCompanyApiKey` used is your API key
 
@@ -28,7 +28,7 @@ const childCompany = await post('https://api.hash.com.br/children/companies', cr
 childCompanyApiKey = childCompany.hash_key
 childCompanyId = childCompany.id
 ```
-_source: "Create company" in [index.test.js](./src/index.test.js)_
+_source: ["Create company" in index.test.js](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L10-L27)_
 
 _API Docs source: https://docs.hash.com.br/reference#create-merchant_
 
@@ -36,12 +36,12 @@ _API Docs source: https://docs.hash.com.br/reference#create-merchant_
 
 After creating a company you have to have to create an affiliation which will contain the provider used in order to register transactions. In order to do that we send this request:
 
-The `createAffiliation` used is this file: [mock-data/create-affiliation.json](./mock-data/create-affiliation.json)
+The `createAffiliation` used is this file: [mock-data/create-affiliation.json](./src/mock-data/create-affiliation.json)
 
 ```js
 const company = post('https://api.hash.com.br/affiliations', createAffiliation, childCompanyApiKey)
 ```
-_source: "Create affiliation" in [index.test.js](./src/index.test.js)_
+_source: ["Create affiliation" in index.test.js](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L30-L43)_
 
 _API Docs source: https://docs.hash.com.br/reference#create-affiliations_
 
@@ -54,7 +54,7 @@ The `createFeeRule` used is this file: [mock-data/create-fee-rule.json](./mock-d
 ```js
 const feeRule = await post(`https://api.hash.com.br/children/${childCompanyId}/fee_rule`, createFeeRule, parentCompanyApiKey)
 ```
-_source: "Create fee rule" in [index.test.js](./src/index.test.js)_
+_source: ["Create fee rule" in index.test.js](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L46-L57)_
 
 _API Docs source: https://docs.hash.com.br/reference#create-fee-rule_
 
@@ -62,12 +62,12 @@ _API Docs source: https://docs.hash.com.br/reference#create-fee-rule_
 
 The last step before being able to register transaction is to register a hardware (For example, a POS). Be sure to alter the data to math your hardware model. The serial number can be found on a barcode sticker attached to the hardware box, the model and provider can be found on the hardware itself. To register a hardware we use this request:
 
-The `registerHardware` used is this file: [mock-data/register-hardware.json](./mock-data/register-hardware.json)
+The `registerHardware` used is this file: [mock-data/register-hardware.json](./src/mock-data/register-hardware.json)
 
 ```js
 const hardware = await post(`https://api.hash.com.br/children/${childCompanyId}/hardwares`, registerHardware, parentCompanyApiKey)
 ```
-_source: "Register hardware" in [index.test.js](./src/index.test.js)_
+_source: ["Register hardware" in index.test.js](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L60-L75)_
 
 _API Docs source: https://docs.hash.com.br/reference#register-a-hardware_
 
@@ -84,7 +84,7 @@ Now that you made a transaction you should be able to see it in Hash API. To vie
 ```js
 const response = await get('https://api.hash.com.br/children/transactions?count=10&page=1', {}, childCompanyApiKey)
 ```
-_source: "View all transactions for a company" in [index.test.js](./src/index.test.js)_
+_source: ["View all transactions for a company" in index.test.js](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L90-L98)_
 
 _API Docs source: https://docs.hash.com.br/reference#get-all-transactions_
 
