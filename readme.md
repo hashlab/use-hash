@@ -49,7 +49,7 @@ _API Docs source: https://docs.hash.com.br/reference#create-affiliations_
 
 After creating a company and an affiliation you have to register the fee rule for the company created. In order to do that we use this request:
 
-The `createFeeRule` used is this file: [mock-data/create-fee-rule.json](./mock-data/create-fee-rule.json)
+The `createFeeRule` used is this file: [mock-data/create-fee-rule.json](./src/mock-data/create-fee-rule.json)
 
 ```js
 const feeRule = await post(`https://api.hash.com.br/children/${childCompanyId}/fee_rule`, createFeeRule, parentCompanyApiKey)
