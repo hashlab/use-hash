@@ -166,16 +166,18 @@ This repository can be cloned and you can run the code to test request by yourse
 
 About 4, here are the places where you'll have to change in order for the tests in [**index.test.js**](./src/inde.test.js) to work. Here are some of the lines you will have to change, it's wise to check all fields in the mock data and change them to your testing needs:
 
-* **line 4**: Add the API Key of your parent company
+* [**line 4**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L4): Add the API Key of your parent company
 
     * If you already ran the test once you have to change the document number on line 16 in order to create a new 
 company. The document number is an unique identifier for our API.
 
-* **line 15**: Add a valid mcc (Your valid MCCs are sent together with your API Key)
+* [**line 14**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L14): Will work only once since you can only create one company for each document number. Change it to create another company.
 
-* **line 34**: Add a valid internal_merchant_id (Your valid internal_merchant_id's are sent together with your API Key)
+* [**line 15**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L15): Add a valid mcc (Your valid MCCs are sent together with your API Key)
 
-* **lines 64, 65 and 66**: Add your hardware information
+* [**line 34**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L34): Add a valid internal_merchant_id (Your valid internal_merchant_id's are sent together with your API Key)
+
+* [**lines 64 to 66**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L64-L66): Add your hardware information
 
 # Other Links
 
