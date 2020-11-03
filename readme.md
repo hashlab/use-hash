@@ -137,7 +137,7 @@ const response = await put(
 
 The API key used will determine the company to be updated.
 
-### Simulating spot anticipation
+## Simulating spot anticipation
 
 Before executing it's recommended to simulate your anticipation in order to see if things will happen as expected.
 
@@ -172,7 +172,7 @@ const response = await post(
 
 _API Docs source: https://docs.hash.com.br/reference#sobre-a-spot-anticipation_
 
-### Executing spot anticipation _(work in progress)_
+## Executing spot anticipation _(work in progress)_
 
 To execute a spot anticipatin we do the following request:
 
