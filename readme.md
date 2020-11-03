@@ -108,11 +108,19 @@ _source: ["View all transactions for a company" in index.test.js](https://github
 
 _API Docs source: https://docs.hash.com.br/reference#get-all-transactions_
 
-## View financial calendar for a company _(work in progress)_
+## View financial calendar for a company 
 
-There is an entity called "payables" which represents an amount of money to be paid to someone. You can list a company's payables in order to have it's financial calendar 
+There is an entity called "payables" which represents an amount of money to be paid to someone. You can list a company's payables in order to have it's financial calendar:
 
-## Set anticipation configuration _(work in progress)_
+```js
+const response = await get(
+  `https://api.hash.com.br/payables/${childCompanyId}`,
+  {},
+  childCompanyApiKey
+)
+```
+
+## Set anticipation configuration
 
 Anticipation is the act of requesting a payout using future payables. You can schedule anticipations to happen periodically or can choose to manually anticipate whenever you want to. By default anticipations are automatic and the interval is 1 day, but you can se your own default for the companies you create by updating them in the following route
 
@@ -129,7 +137,7 @@ const response = await put(
 
 The API key used will determine the company to be updated.
 
-### Simulating spot anticipation _(work in progress)_
+### Simulating spot anticipation
 
 Before executing it's recommended to simulate your anticipation in order to see if things will happen as expected.
 
@@ -145,7 +153,7 @@ const response = await put(
 )
 ```
 
-We then execute the following request:
+With the company correctly configured for spot anticipation, execute the simulation request:
 
 ```js
 const response = await post(
