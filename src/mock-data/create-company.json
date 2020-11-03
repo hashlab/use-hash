@@ -1,65 +1,67 @@
 {
-    "document_number": "36787162537",
+  "document_number": "36787162537",
+  "name": "Joao",
+  "estimated_monthly_tpv": 30000,
+  "mcc": "5211",
+  "default_payment_provider": "hash",
+  "full_name": "Joao Store LTDA",
+  "email": "joao+doc@hash.com.br",
+  "anticipation_type": "automatic",
+  "anticipation_days_interval": 1,
+  "contact": {
     "name": "Joao",
-    "estimated_monthly_tpv": 30000,
-    "mcc": "5211",
-    "default_payment_provider": "hash",
-    "full_name": "Joao Store LTDA",
-    "email": "joao+doc@hash.com.br",
-    "anticipation_type": "automatic",
-    "anticipation_days_interval": 1,
-    "contact": {
-        "name": "Joao",
-        "phone": "11981225030",
-        "email": "joao+doc@email.com.br"
-    },
-    "bank_account": {
-        "bank_code": "341",
-        "agencia": "0721",
-        "agencia_dv": "3",
-        "conta": "02733",
-        "conta_dv": "2",
-        "legal_name": "Joao Store LTDA",
-        "document_number": "36787162537"
-    },
-    "address": {
-        "street": "RUA JOAQUIM OLIVEIRA FREITAS",
-        "street_number": "12332",
-        "zipcode": "05133000",
-        "neighborhood": "VILA MANGALOT",
-        "state": "SP",
-        "city": "Sao Paulo",
-        "country": "076"
-    },
-    "shipping_address": {
-        "street": "Av. Artur de Queiros",
-        "street_number": "394",
-        "zipcode": "09015510",
-        "neighborhood": "Casa Branca",
-        "state": "SP",
-        "city": "Santo Andre"
-    },
-    "metadata": {
-        "teste": [{
-            "oi": 123
-        }]
-    },
-    "company_metadata": {
-        "alguma_info_customizada": "super_custom",
-        "central": "01",
-        "type": "partner",
-        "partner": "SP_01",
-        "salesman": "guido+salesman@hash.com.br"
-    },
-    "email_configurations": {
-        "custom_domain_enabled": false,
-        "send_activation_email": false
-    },
-    "main_capture_method": "pos",
-    "capture_method_hardware_owner": "company",
-    "transfer_configurations": {
-        "automatic_transfer_enabled": true,
-        "transfer_frequency": "daily",
-        "transfer_date": 1
-    }
+    "phone": "11981225030",
+    "email": "joao+doc@email.com.br"
+  },
+  "bank_account": {
+    "bank_code": "341",
+    "agencia": "0721",
+    "agencia_dv": "3",
+    "conta": "02733",
+    "conta_dv": "2",
+    "legal_name": "Joao Store LTDA",
+    "document_number": "36787162537"
+  },
+  "address": {
+    "street": "RUA JOAQUIM OLIVEIRA FREITAS",
+    "street_number": "12332",
+    "zipcode": "05133000",
+    "neighborhood": "VILA MANGALOT",
+    "state": "SP",
+    "city": "Sao Paulo",
+    "country": "076"
+  },
+  "shipping_address": {
+    "street": "Av. Artur de Queiros",
+    "street_number": "394",
+    "zipcode": "09015510",
+    "neighborhood": "Casa Branca",
+    "state": "SP",
+    "city": "Santo Andre"
+  },
+  "metadata": {
+    "teste": [
+      {
+        "oi": 123
+      }
+    ]
+  },
+  "company_metadata": {
+    "alguma_info_customizada": "super_custom",
+    "central": "01",
+    "type": "partner",
+    "partner": "SP_01",
+    "salesman": "guido+salesman@hash.com.br"
+  },
+  "email_configurations": {
+    "custom_domain_enabled": false,
+    "send_activation_email": false
+  },
+  "main_capture_method": "pos",
+  "capture_method_hardware_owner": "company",
+  "transfer_configurations": {
+    "automatic_transfer_enabled": true,
+    "transfer_frequency": "daily",
+    "transfer_date": 1
+  }
 }
