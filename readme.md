@@ -43,7 +43,7 @@ After creating a company you have to have to create an affiliation which will co
 The `createAffiliation` used is this file: [mock-data/create-affiliation.json](./src/mock-data/create-affiliation.json)
 
 ```js
-const company = post(
+const company = await post(
   'https://api.hash.com.br/affiliations',
   createAffiliation,
   childCompanyApiKey
