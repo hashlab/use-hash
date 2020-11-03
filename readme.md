@@ -157,7 +157,7 @@ With the company correctly configured for spot anticipation, execute the simulat
 
 ```js
 const response = await post(
-  'https://api.hash.com.br/anticipation',
+  'https://api.hash.com.br/anticipation/simulation',
   {
     "anticipate_to": "2019-05-13",
     "payables_priority": "start",
