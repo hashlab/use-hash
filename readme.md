@@ -23,7 +23,11 @@ The `createCompany` used is this file: [mock-data/create-company.json](./src/moc
 The `parentCompanyApiKey` used is your API key
 
 ```js
-const childCompany = await post('https://api.hash.com.br/children/companies', createCompany, parentCompanyApiKey)
+const childCompany = await post(
+  'https://api.hash.com.br/children/companies',
+  createCompany,
+  parentCompanyApiKey
+)
 
 childCompanyApiKey = childCompany.hash_key
 childCompanyId = childCompany.id
@@ -39,7 +43,11 @@ After creating a company you have to have to create an affiliation which will co
 The `createAffiliation` used is this file: [mock-data/create-affiliation.json](./src/mock-data/create-affiliation.json)
 
 ```js
-const company = post('https://api.hash.com.br/affiliations', createAffiliation, childCompanyApiKey)
+const company = post(
+  'https://api.hash.com.br/affiliations',
+  createAffiliation,
+  childCompanyApiKey
+)
 ```
 _source: ["Create affiliation" in index.test.js](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L30-L43)_
 
@@ -52,7 +60,11 @@ After creating a company and an affiliation you have to register the fee rule fo
 The `createFeeRule` used is this file: [mock-data/create-fee-rule.json](./src/mock-data/create-fee-rule.json)
 
 ```js
-const feeRule = await post(`https://api.hash.com.br/children/${childCompanyId}/fee_rule`, createFeeRule, parentCompanyApiKey)
+const feeRule = await post(
+  `https://api.hash.com.br/children/${childCompanyId}/fee_rule`
+  createFeeRule,
+  parentCompanyApiKey
+)
 ```
 _source: ["Create fee rule" in index.test.js](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L46-L57)_
 
@@ -65,7 +77,11 @@ The last step before being able to register transaction is to register a hardwar
 The `registerHardware` used is this file: [mock-data/register-hardware.json](./src/mock-data/register-hardware.json)
 
 ```js
-const hardware = await post(`https://api.hash.com.br/children/${childCompanyId}/hardwares`, registerHardware, parentCompanyApiKey)
+const hardware = await post(
+  `https://api.hash.com.br/children/${childCompanyId}/hardwares`,
+  registerHardware,
+  parentCompanyApiKey
+)
 ```
 _source: ["Register hardware" in index.test.js](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L60-L75)_
 
@@ -82,7 +98,11 @@ With everything properly registered you should now be abot to make a transaction
 Now that you made a transaction you should be able to see it in Hash API. To view all transactions for a company use this request and use the apikey for the correspondent company you want to:
 
 ```js
-const response = await get('https://api.hash.com.br/children/transactions?count=10&page=1', {}, childCompanyApiKey)
+const response = await get(
+  'https://api.hash.com.br/children/transactions?count=10&page=1',
+  {}, // empty body because it's a GET request, parameters are above in URL.
+  childCompanyApiKey
+)
 ```
 _source: ["View all transactions for a company" in index.test.js](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L90-L98)_
 
@@ -98,12 +118,12 @@ Anticipation is the act of requesting a payout using future payables. You can sc
 
 ```js
 const response = await put(
-    'https://api.hash.com.br/anticipation',
-    {
-        "anticipation_type": "automatic", // or "spot" for disabling automatic anticipation
-        "anticipation_days_interval": 7, // min 1, max 30. If above is "spot" this is ignored.
-    },
-    childCompanyApiKey
+  'https://api.hash.com.br/anticipation',
+  {
+    "anticipation_type": "automatic", // or "spot" for disabling automatic anticipation
+    "anticipation_days_interval": 7, // min 1, max 30. If above is "spot" this is ignored.
+  },
+  childCompanyApiKey
 )
 ```
 
@@ -117,11 +137,11 @@ First make sure that the company has "spot" anticipation enabled insted of "auto
 
 ```js
 const response = await put(
-    'https://api.hash.com.br/anticipation',
-    {
-        "anticipation_type": "spot"
-    },
-    childCompanyApiKey
+  'https://api.hash.com.br/anticipation',
+  {
+    "anticipation_type": "spot"
+  },
+  childCompanyApiKey
 )
 ```
 
@@ -129,16 +149,16 @@ We then execute the following request:
 
 ```js
 const response = await post(
-    'https://api.hash.com.br/anticipation',
-    {
-        "anticipate_to": "2019-05-13",
-        "payables_priority": "start",
-        "anticipate_all": false,
-        "anticipation_type": "per_month",
-        "anticipation_fee": 3,
-        "requested_amount": 500
-    },
-    childCompanyApiKey
+  'https://api.hash.com.br/anticipation',
+  {
+    "anticipate_to": "2019-05-13",
+    "payables_priority": "start",
+    "anticipate_all": false,
+    "anticipation_type": "per_month",
+    "anticipation_fee": 3,
+    "requested_amount": 500
+  },
+  childCompanyApiKey
 )
 ```
 
