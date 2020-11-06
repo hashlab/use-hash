@@ -107,9 +107,16 @@ test.serial('View financial calendar for a company', async t => {
 
 })
 
-test.serial('Change anticipation configuration', async t => {
+test.serial('Set anticipation configuration', async t => {
 
-  const response = await put('https://api.hash.com.br/anticipation', { anticipation_type: "automatic" /*spot*/ , anticipation_days_interval: 1 /*max 30*/ }, childCompanyApiKey)
+  const response = await put(
+    'https://api.hash.com.br/anticipation',
+    {
+      anticipation_type: "automatic", /*spot*/
+      anticipation_days_interval: 1, /*max 30*/
+    },
+    childCompanyApiKey
+  )
   
   t.falsy(response.errors)
 
@@ -119,7 +126,18 @@ test.serial('Change anticipation configuration', async t => {
 
 test.serial('Simulate spot anticipation', async t => {
 
-  const response = await post('https://api.hash.com.br/anticipation/simulation', simulateAnticipation, childCompanyApiKey)
+  const response = await post(
+    'https://api.hash.com.br/anticipation/simulation',
+    {
+      "anticipate_to": "2019-05-13",
+      "payables_priority": "start",
+      "anticipate_all": false,
+      "anticipation_type": "per_month",
+      "anticipation_fee": 3,
+      "requested_amount": 500
+    },
+    childCompanyApiKey
+  )
   
   t.falsy(response.errors)
 
@@ -129,7 +147,18 @@ test.serial('Simulate spot anticipation', async t => {
 
 test.serial('Execute spot anticipation', async t => {
 
-  const response = await post('https://api.hash.com.br/anticipation', executeAnticipation, childCompanyApiKey)
+  const response = await post(
+    'https://api.hash.com.br/anticipation',
+    {
+      "anticipate_to": "2019-05-13",
+      "payables_priority": "start",
+      "anticipate_all": false,
+      "anticipation_type": "per_month",
+      "anticipation_fee": 3,
+      "requested_amount": 500
+    },
+    childCompanyApiKey
+  )
   
   t.falsy(response.errors)
 

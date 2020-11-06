@@ -120,6 +120,9 @@ const response = await get(
 )
 ```
 
+_source: ["View financial calendar for a company" in index.test.js](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L100-L108)_
+
+
 ## Set anticipation configuration
 
 Anticipation is the act of requesting a payout using future payables. You can schedule anticipations to happen periodically or can choose to manually anticipate whenever you want to. By default anticipations are automatic and the interval is 1 day, but you can se your own default for the companies you create by updating them in the following route
@@ -136,6 +139,8 @@ const response = await put(
 ```
 
 The API key used will determine the company to be updated.
+
+_source: ["Set anticipation configuration" in index.test.js](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L110-L125)_
 
 ## Simulating spot anticipation
 
@@ -170,15 +175,38 @@ const response = await post(
 )
 ```
 
+_source: ["Simulate spot anticipation" in index.test.js](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L127-L146)_
+
 _API Docs source: https://docs.hash.com.br/reference#sobre-a-spot-anticipation_
 
-## Executing spot anticipation _(work in progress)_
+## Executing spot anticipation
 
 To execute a spot anticipatin we do the following request:
+
+```js
+const response = await post(
+  'https://api.hash.com.br/anticipation',
+  {
+    "anticipate_to": "2019-05-13",
+    "payables_priority": "start",
+    "anticipate_all": false,
+    "anticipation_type": "per_month",
+    "anticipation_fee": 3,
+    "requested_amount": 500
+  },
+  childCompanyApiKey
+)
+```
+
+_source: ["Execute spot anticipation" in index.test.js](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L148-L167)_
 
 _API Docs source: https://docs.hash.com.br/reference#spot-anticipation_
 
 ## Create charge _(work in progress)_
+
+tbd
+
+## Webhooks _(work in progress)_
 
 tbd
 
