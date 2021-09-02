@@ -2,21 +2,21 @@
 
 > From your "first test request" to your "first production transaction" and beyond
 
-This is a guide to support developers that are integrating with Hash API for the first time. The initial part of this document is a step-by-step guide on the requests you need to make in order for your first test transaction work. The second part will better illustrate all entities that we created in this guide and how they corelate in Hash environment.
+This is a guide to support developers that are integrating with Hash API for the first time. The initial part of this document is a step-by-step guide on the requests you need to make in order for your first test transaction to work. The second part will better illustrate all entities that we created in this guide and how they corelate with each other in Hash's environment.
 
 The code part of this guide was writen in JS for illustration. For more information on the code there is a section below the guide [about the code in this repository](#about-the-code-in-this-repository)
 
 # Step-by-step request guide to your first transaction 
 
-If you are reading this document you might have received your initial credentials email with our API Docs link and your API test key. You are a company in hash API now, your api key is directly tied with your company.
+If you are reading this document you might have received an email with your initial credentials, Hash's API Docs link and your API test key. You are a company in Hash's API now, and your api key is directly tied to your company.
 
-An API key will be required for every request in our API and it is sent on the header. To see how that happens at the code level check out the [request module](./src/request.js) for this repository, the function "makeRequest" (line 3) builds the correct header using a Hash API Key.
+An API key will be required for every request in our API and it should be sent in the header. To see how that happens at the code level check out the [request module](./src/request.js) for this repository; the function "makeRequest" (line 3) builds the correct header using a Hash API Key.
 
 ## Create company
 
 Your company is the parent of all the companies you create in our API, and in order to make a transaction your first step is to create a company that will be responsible for this transaction.
 
-When succesfull the request below will return an object that represents the new company created. **For all the other next steps use the API key that is returned inside the company object from this request's response, this is how we bind all other entities to this company**
+When succesfull, the request below will return an object that represents the new company created. **For all the other next steps, use the API key that is returned inside the company object from this request's response, this is how we link all other entities to this company**
 
 The `createCompany` used is this file: [mock-data/create-company.json](./src/mock-data/create-company.json)
 
@@ -38,7 +38,7 @@ _API Docs source: https://docs.hash.com.br/reference#create-merchant_
 
 ## Create affiliation
 
-After creating a company you have to have to create an affiliation which will contain the provider used in order to register transactions. In order to do that we send this request:
+After creating a company you have to create an affiliation which will contain the provider used to register transactions. To do this, please create the following request:
 
 The `createAffiliation` used is this file: [mock-data/create-affiliation.json](./src/mock-data/create-affiliation.json)
 
@@ -55,7 +55,7 @@ _API Docs source: https://docs.hash.com.br/reference#create-affiliations_
 
 ## Configure fee rule
 
-After creating a company and an affiliation you have to register the fee rule for the company created. In order to do that we use this request:
+After creating a company and an affiliation you have to register the fee rule for the company created. To do this, please create the following request:
 
 The `createFeeRule` used is this file: [mock-data/create-fee-rule.json](./src/mock-data/create-fee-rule.json)
 
@@ -72,7 +72,7 @@ _API Docs source: https://docs.hash.com.br/reference#create-fee-rule_
 
 ## Register Hardware
 
-The last step before being able to register transaction is to register a hardware (For example, a POS). Be sure to alter the data to math your hardware model. The serial number can be found on a barcode sticker attached to the hardware box, the model and provider can be found on the hardware itself. To register a hardware we use this request:
+The last step before being able to register transaction is to register a hardware (for example, a POS). Be sure to alter the data to match your hardware model. The serial number can be found on a barcode sticker attached to the hardware box, the model and provider can be found on the hardware itself. To register a hardware, please create the following request:
 
 The `registerHardware` used is this file: [mock-data/register-hardware.json](./src/mock-data/register-hardware.json)
 
@@ -89,7 +89,7 @@ _API Docs source: https://docs.hash.com.br/reference#register-a-hardware_
 
 ## Register Transaction 
 
-With everything properly registered you should now be abot to make a transaction with your hardware. In order to do that turn it on, input the  merchant document number in order to activate the terminal, and you should be able to swipe a card and make a test transaction.
+With everything properly registered, you should now be able to create a transaction with your hardware. To do that, please turn it on, input the merchant document number (which activates the harware), and you should be able to swipe a card and make a test transaction.
 
 # Beyond the first transaction
 
