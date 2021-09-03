@@ -8,19 +8,19 @@ The code part of this guide was writen in JS for illustration. For more informat
 
 # Step-by-step request guide to your first transaction 
 
-If you are reading this document you might have received an email with your initial credentials, Hash's API Docs link and your API test key. You are a company in Hash's API now, and your api key is directly tied to your company.
+If you are reading this document you might have received an email with your initial credentials, Hash's API Docs link and your API test key. You are a company in Hash's API now, and your hash_key is directly tied to your company.
 
-An API key will be required for every request in our API and it should be sent in the header. To see how that happens at the code level check out the [request module](./src/request.js) for this repository; the function "makeRequest" (line 3) builds the correct header using a Hash API Key.
+The hash_key will be required for every request in our API and it should be sent in the header. To see how that happens at the code level check out the [request module](./src/request.js) for this repository; the function "makeRequest" (line 3) builds the correct header using a hash_key.
 
 ## Create company
 
 Your company is the parent of all the companies you create in our API, and in order to make a transaction your first step is to create a company that will be responsible for this transaction.
 
-When succesfull, the request below will return an object that represents the new company created. **For all the other next steps, use the API key that is returned inside the company object from this request's response, this is how we link all other entities to this company**
+When succesfull, the request below will return an object that represents the new company created. **For all the other next steps, use the hash_key that is returned inside the company object from this request's response, this is how we link all other entities to this company**
 
 The `createCompany` used is this file: [mock-data/create-company.json](./src/mock-data/create-company.json)
 
-The `parentCompanyApiKey` used is your API key
+The `parentCompanyApiKey` used is your hash_key
 
 ```js
 const childCompany = await post(
@@ -138,7 +138,7 @@ const response = await put(
 )
 ```
 
-The API key used will determine the company to be updated.
+The hash_key used will determine the company to be updated.
 
 _source: ["Set anticipation configuration" in index.test.js](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L110-L125)_
 
@@ -229,9 +229,9 @@ company. The document number is an unique identifier for our API.
 
 * [**line 14**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L14): Will work only once since you can only create one company for each document number. Change it to create another company.
 
-* [**line 15**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L15): Add a valid mcc (your valid MCCs are sent together with your hash_key)
+* [**line 15**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L15): Add a valid mcc (Your valid MCCs are sent together with your hash_key)
 
-* [**line 34**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L34): Add a valid internal_merchant_id (your valid internal_merchant_id's are sent together with your API Key)
+* [**line 34**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L34): Add a valid internal_merchant_id (Your valid internal_merchant_id's are sent together with your hash_key)
 
 * [**lines 64 to 66**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L64-L66): Add your hardware information
 
