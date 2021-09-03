@@ -95,7 +95,7 @@ With everything properly registered, you should now be able to create a transact
 
 ## View all transactions for a company
 
-Now that you made a transaction you should be able to see it in Hash API. To view all transactions for a company use this request and use the apikey for the correspondent company you want to:
+Now that you made a transaction you should be able to see it in Hash's API. To view all transactions for a company, you may utilize the request below. Make sure you are using the hash_key of the company for which you wish to list the transactions.
 
 ```js
 const response = await get(
@@ -110,7 +110,7 @@ _API Docs source: https://docs.hash.com.br/reference#get-all-transactions_
 
 ## View financial calendar for a company 
 
-There is an entity called "payables" which represents an amount of money to be paid to someone. You can list a company's payables in order to have it's financial calendar:
+There is an entity called "payables", which represents an amount of money to be paid to someone. You may list a company's payables to obtain its financial calendar (i.e., how much should a company receive and when). To do so, you may utilize the request below.
 
 ```js
 const response = await get(
@@ -125,7 +125,7 @@ _source: ["View financial calendar for a company" in index.test.js](https://gith
 
 ## Set anticipation configuration
 
-Anticipation is the act of requesting a payout using future payables. You can schedule anticipations to happen periodically or can choose to manually anticipate whenever you want to. By default anticipations are automatic and the interval is 1 day, but you can se your own default for the companies you create by updating them in the following route
+Anticipation is the act of changing a payable's date to an earlier date, thus making a company receive its money earlier. Please note that this process is typically not free of charge. You can schedule periodic anticipations or you can choose to create spot anticipations. By default, anticipations are automatic and the interval is set to 1 business day — that is, the payable's dates are set to the next business day. However, you can set your own default for the companies you create by updating them through the route below.
 
 ```js
 const response = await put(
@@ -144,9 +144,9 @@ _source: ["Set anticipation configuration" in index.test.js](https://github.com/
 
 ## Simulating spot anticipation
 
-Before executing it's recommended to simulate your anticipation in order to see if things will happen as expected.
+Before creating an anticipation, you should simulate one, as anticipations are not free of charge.
 
-First make sure that the company has "spot" anticipation enabled insted of "automatic". This can be done with the following request:
+First, make sure that the company has its anticipation configuration set to "spot" insted of "automatic". To do so, you may utilize the request below.
 
 ```js
 const response = await put(
@@ -158,7 +158,7 @@ const response = await put(
 )
 ```
 
-With the company correctly configured for spot anticipation, execute the simulation request:
+With the company correctly set to spot anticipation, you may simulate an anticipation with the request below.
 
 ```js
 const response = await post(
@@ -181,7 +181,7 @@ _API Docs source: https://docs.hash.com.br/reference#sobre-a-spot-anticipation_
 
 ## Executing spot anticipation
 
-To execute a spot anticipatin we do the following request:
+To execute a spot anticipation you may use the request below.
 
 ```js
 const response = await post(
@@ -212,26 +212,26 @@ tbd
 
 # About the code in this repository
 
-This repository can be cloned and you can run the code to test request by yourself:
+You may clone this repository and you may also run the code to test request yourself:
 
-1) Install [Node.js](https://nodejs.org/en/)
-2) Clone this repository
-3) Run `npm install` to install dependencies
-4) Add your API key and IDs
-5) Run `npm test` to run all tests
+1) Install [Node.js](https://nodejs.org/en/);
+2) Clone this repository;
+3) Run `npm install` to install dependencies;
+4) Add your hash_keys and IDs;
+5) Run `npm test` to run all tests.
 
-About 4, here are the places where you'll have to change in order for the tests in [**index.test.js**](./src/inde.test.js) to work. Here are some of the lines you will have to change, it's wise to check all fields in the mock data and change them to your testing needs:
+Note in respect to Step 4: You will have to make alterations in some lines for the tests in [**index.test.js**](./src/inde.test.js) to work. Listed below are some of the lines that you will have to change. It is wise to check all fields in the mock data and change them to your testing needs:
 
-* [**line 4**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L4): Add the API Key of your parent company
+* [**line 4**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L4): Add the hash_key of your parent company
 
     * If you already ran the test once you have to change the document number on line 16 in order to create a new 
 company. The document number is an unique identifier for our API.
 
 * [**line 14**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L14): Will work only once since you can only create one company for each document number. Change it to create another company.
 
-* [**line 15**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L15): Add a valid mcc (Your valid MCCs are sent together with your API Key)
+* [**line 15**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L15): Add a valid mcc (your valid MCCs are sent together with your hash_key)
 
-* [**line 34**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L34): Add a valid internal_merchant_id (Your valid internal_merchant_id's are sent together with your API Key)
+* [**line 34**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L34): Add a valid internal_merchant_id (your valid internal_merchant_id's are sent together with your API Key)
 
 * [**lines 64 to 66**](https://github.com/hashlab/use-hash/blob/main/src/index.test.js#L64-L66): Add your hardware information
 
